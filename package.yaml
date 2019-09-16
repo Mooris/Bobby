@@ -1,0 +1,60 @@
+name:                bobby
+version:             0.1.0.0
+github:              "Mooris/bobby"
+license:             BSD3
+author:              "Pierre PELOILLE"
+maintainer:          "peloille.pierre@gmail.com"
+copyright:           "Copyright (c) 2019 Pierre PELOILLE"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Swagg ultime
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/Mooris/bobby#readme>
+
+ghc-options: -O2 -Wall
+
+dependencies:
+- base >= 4.7 && < 5
+- bytestring
+- array
+- binary
+- mtl
+
+default-extensions: LambdaCase
+
+library:
+  source-dirs: src
+
+executables:
+  bobby:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - bobby
+    - sdl2
+    - text
+    - linear
+    - SFML
+
+tests:
+  bobby-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - bobby
